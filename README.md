@@ -73,7 +73,7 @@ python -m venv .venv
 **Windows**
 
 ```bash
-.venv\Scripts\activate
+.\.venv\Scripts\Activate.ps1
 ```
 
 **Mac/Linux**
@@ -88,12 +88,6 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-If you don’t have a requirements file, generate one:
-
-```bash
-pip freeze > requirements.txt
-```
-
 ### **5. Add your Gemini API key**
 
 Create `.env` in `/backend`:
@@ -105,7 +99,7 @@ GEMINI_API_KEY=your_key_here
 ### **6. Run the server**
 
 ```bash
-uvicorn app:app --reload
+uvicorn app:app --port 8000
 ```
 
 Server runs at:
