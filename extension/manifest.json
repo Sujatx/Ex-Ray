@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Ex-Ray: Instagram DM Vibe Scanner",
+  "description": "Scans your Instagram DMs, rates the vibes, and roasts your chat game in one brutal line.",
+  "version": "0.1.0",
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.instagram.com/*",
+        "https://instagram.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "host_permissions": [
+    "https://www.instagram.com/*",
+    "https://instagram.com/*"
+  ]
+}

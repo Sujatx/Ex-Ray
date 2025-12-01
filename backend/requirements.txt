@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+joblib
+google-generativeai
+python-dotenv
+scikit-learn
+pydantic
