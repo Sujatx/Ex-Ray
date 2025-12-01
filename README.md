@@ -187,6 +187,3 @@ Just vibes, sarcasm, and code.
 
 ---
 
-
-
-Just say what you need next.
