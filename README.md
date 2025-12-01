@@ -1,76 +1,192 @@
-# Ex-Ray 
+# **EX-RAY 🔍 — The Relationship X-Ray Tool**
 
-Ex-Ray is a tiny open-source tool that scans your Instagram DMs and roasts your chat game.
+*A brutal AI-powered vibe check for your Instagram DMs.*
 
-- Chrome extension content script (runs on `instagram.com`)
-- FastAPI backend on `localhost:8000`
-- ML model to tag message vibes
-- Gemini (optional) for toxic little verdicts
+EX-RAY scans your Instagram DM conversations and exposes the real vibe — dry, flirty, dead, desperate, one-sided, chaotic… whatever it is, EX-RAY will say it **with no filter**.
 
-## How it works
+Built with a custom ML model + Gemini + sarcasm.
 
-1. Open any Instagram DM thread.
-2. Click the floating Ex-Ray button near the chat input.
-3. It scrolls back, grabs ~40 messages, sends **only text + sender labels** to the local backend.
-4. Backend:
-   - extracts stats (who talks more, emojis, questions, etc.)
-   - runs a scikit-learn model for per-message vibes
-   - uses Gemini (if configured) to generate a **brutal 1-liner verdict**
-5. You get a glassy overlay with:
-   - overall vibe
-   - you vs them effort
-   - ghost risk
-   - “will they text again” %
-   - one-line roast
+---
 
-## Setup
+## ⭐ **Features**
 
-### Backend
+* 🧠 **AI vibe analysis** (ML + heuristic rules + Gemini roast mode)
+* 🔍 **Deep Scan** — scrolls up automatically to fetch long chat history
+* 🎭 **Mood detection** (You vs Them)
+* ⚡ **Energy match score**
+* 👻 **Ghosting risk prediction**
+* 💬 **Will-they-text-again %**
+* 🔥 **Brutally honest verdict** (short, toxic, and accurate)
+* 🧊 **Glassmorphism UI**
+* 🖱️ **One-click floating button** inside Instagram Web
+* 🛠️ **Fully open-source** for contributions
+
+---
+
+# 📦 **Project Structure**
+
+```
+EX-RAY/
+│
+├── backend/
+│   ├── app.py               # FastAPI backend server
+│   ├── .env                 # Gemini API key (ignored in git)
+│   ├── logic/
+│   │   ├── features.py
+│   │   ├── labels.py
+│   │   └── rules.py
+│   └── ml/
+│       ├── train.py
+│       ├── try_vibe.py
+│       ├── vibe_model.joblib
+│       └── vibe_vectorizer.joblib
+│
+├── extension/
+│   ├── manifest.json        # Chrome/Edge extension config
+│   └── content.js           # Main content script
+│
+├── datasets/
+│   └── hinglish.csv         # Training data
+│
+├── .gitignore
+└── README.md
+```
+
+---
+
+# 🚀 **How to Run the Backend (FastAPI)**
+
+### **1. Go to backend folder**
 
 ```bash
-git clone https://github.com/yourname/ex-ray.git
-cd ex-ray/backend
+cd backend
+```
+
+### **2. Create a virtual environment**
+
+```bash
 python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
+```
+
+### **3. Activate it**
+
+**Windows**
+
+```bash
+.venv\Scripts\activate
+```
+
+**Mac/Linux**
+
+```bash
+source .venv/bin/activate
+```
+
+### **4. Install dependencies**
+
+```bash
 pip install -r requirements.txt
 ```
-Create a .env:
 
-GEMINI_API_KEY=your_key_here   # optional but recommended
+If you don’t have a requirements file, generate one:
 
-
-Run:
-```
-uvicorn app:app --reload --port 8000
+```bash
+pip freeze > requirements.txt
 ```
 
+### **5. Add your Gemini API key**
 
-Backend lives at http://127.0.0.1:8000.
+Create `.env` in `/backend`:
 
-Content script (dev mode)
+```
+GEMINI_API_KEY=your_key_here
+```
 
-Go to chrome://extensions
+### **6. Run the server**
 
-Enable Developer mode
+```bash
+uvicorn app:app --reload
+```
 
-Click Load unpacked
+Server runs at:
 
-Select the extension folder (where manifest.json + content.js live)
+```
+http://127.0.0.1:8000
+```
 
-Open Instagram DMs, refresh, click the Ex-Ray button.
+---
 
-Safety / Privacy
+# 🧩 **How to Install the Browser Extension Locally**
 
-Runs on your machine.
+### **1. Open Chrome or Edge**
 
-Only sends:
+### **2. Go to**
 
-sender: "you" / "them"
+```
+chrome://extensions/
+```
 
-text: message text
+or
 
-No usernames, IDs, or tokens.
+```
+edge://extensions/
+```
 
-Gemini only sees aggregate stats, not raw messages.
+### **3. Enable Developer Mode**
+
+Top-right toggle.
+
+### **4. Click “Load Unpacked”**
+
+### **5. Select the `/extension` folder**
+
+Done.
+Your EX-RAY floating button will appear inside Instagram Web.
+
+---
+
+# ⚙️ **How it Works (High Level)**
+
+1. **content.js** injects a floating button in Instagram Web.
+2. On click → it scrolls up, grabs up to 40 messages.
+3. Sends the chat to the FastAPI backend.
+4. Backend:
+
+   * Extracts features
+   * Runs ML vibe classification
+   * Applies rule-based heuristics
+   * Generates a brutal AI verdict via Gemini
+5. The frontend displays a sexy glass UI with vibe breakdown.
+
+---
+
+# 🤝 **Contributing**
+
+Pull requests are welcome.
+
+Things you can help with:
+
+* Improving ML model
+* Training better Hinglish dataset
+* Adding more vibe types
+* UI/UX tweaks
+* Publishing to Edge/Chrome Store
+* Brand assets/icons
+
+---
+
+# 📜 **License**
+
+MIT License — completely open for modification and commercial use.
+
+---
+
+# ❤️ **Made by Sujat**
+
+Just vibes, sarcasm, and code.
+
+---
 
 
+
+Just say what you need next.
